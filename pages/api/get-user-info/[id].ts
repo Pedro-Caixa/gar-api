@@ -38,10 +38,9 @@ function checkOfficer(groupRank: number, divisions: any, userDivisionName: strin
 type ResponseData = {
   username: string;
   isInGar: boolean;
-  divisions:
-    | ({ divisionName: string; isHICOM: boolean; isOfficer: boolean; rank: number; })[]
-    | Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }>;
+  divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }>;
 };
+
 
 let response: ResponseData | undefined;
 
@@ -61,26 +60,24 @@ export default async function handler(
   }
 
   if (isInGar && garDivisions.divisions && typeof garDivisions.divisions === 'object') {
-    const divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number }> = {};
-
+    const divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }> = {};
+  
     for (const divisionId in garDivisions.divisions) {
       if (garDivisions.divisions.hasOwnProperty(divisionId)) {
         const divisionName = garDivisions.divisions[divisionId];
         const group = groups.find(group => group.Id === parseInt(divisionId));
-
         if (group) {
           const { isOfficer, isHICOM } = checkOfficer(group.Rank, divisionRanks, divisionName);
           divisions[divisionName] = { isOfficer, isHICOM, rank: group.Rank };
         }
       }
     }
-    if (Object.keys(divisions).length > 0) {
-      response = {
-        username: robloxUsername,
-        isInGar: isInGar,
-        divisions,
-      };
-    }
+  
+    response = {
+      username: robloxUsername,
+      isInGar,
+      divisions,
+    };
   }
 
   if (response) {
