@@ -42,7 +42,6 @@ type ResponseData = {
   blacklist?: string[]
 };
 
-
 let response: ResponseData | undefined;
 
 export default async function handler(
@@ -56,6 +55,7 @@ export default async function handler(
   let departments = {}
 
   const userId = parseInt(req.query.id as string);
+
   const robloxUsername = await noblox.getUsernameFromId(userId);
   const groups = await noblox.getGroups(userId);
 
@@ -90,7 +90,6 @@ export default async function handler(
           }
     }
   }
-
 
 
   const foundCard = await getCard(robloxUsername);
