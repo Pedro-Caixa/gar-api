@@ -1,5 +1,4 @@
 {
-  "version": "20.11.1",
   "private": true,
   "scripts": {
     "dev": "next",
