@@ -7,8 +7,40 @@
         "83": "Officer",
         "90": "HICOM"
     },
-    "41st": {
-        "1": "Officer",
-        "90": "HICOM"
+    "rg": {
+        "32": "Officer",
+        "35": "HICOM"
+    },
+    "barc": {
+        "56": "Officer",
+        "60": "HICOM"
+    },
+    "rc": {
+        "80": "Officer",
+        "98": "HICOM"
+    },
+    "187th": {
+        "56": "Officer",
+        "60": "HICOM"
+    },
+    "327th": {
+        "56": "Officer",
+        "60": "HICOM"
+    },
+    "104th": {
+        "27": "Officer",
+        "30": "HICOM"
+    },
+    "501st": {
+        "46": "Officer",
+        "55": "HICOM"
+    },
+    "ri": {
+        "40": "Officer",
+        "41": "HICOM"
+    },
+    "arc": {
+        "41": "Officer",
+        "45": "HICOM"
     }
 }

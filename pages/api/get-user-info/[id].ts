@@ -74,7 +74,6 @@ export default async function handler(
         }
       }
     }
-    console.log(await noblox.getRoles(5352039))
     if (Object.keys(divisions).length > 0) {
       response = {
         username: robloxUsername,
