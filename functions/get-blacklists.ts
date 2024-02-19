@@ -1,6 +1,5 @@
 const axios = require("axios");
 const fs = require('fs');
-const cron = require('node-cron');
 
 const cacheFilePath = './gar-information/blacklist_trello.json';
 
@@ -9,7 +8,6 @@ function readCache() {
     return JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'));
   } catch (error) {
     console.error('Error reading cache:', error);
-
     if (!fs.existsSync(cacheFilePath)) {
       console.log('Cache file not found, creating a new one.');
       writeCache({ timestamp: 0, boards: [], cards: [] });
