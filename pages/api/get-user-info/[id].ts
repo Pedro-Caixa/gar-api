@@ -37,6 +37,7 @@ function checkOfficer(groupRank: number, divisions: any, userDivisionName: strin
 type ResponseData = {
   username: string;
   isInGar: boolean;
+  garRank: string;
   divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }>;
   departments: Record<string, {rank: number; }>;
   blacklist?: string[]
@@ -50,14 +51,19 @@ export default async function handler(
 ) {
 
   let isInGar = false;
+  let garRank = 'cool...'
   let blacklist = []
   let divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }> = {};
   let departments = {}
 
+  const cache = readJSON('gar-information/player_information.json');
   const userId = parseInt(req.query.id as string);
+  const userInfo = cache[userId];
 
   const robloxUsername = await noblox.getUsernameFromId(userId);
   const groups = await noblox.getGroups(userId);
+
+  garRank = await noblox.getRankNameInGroup(5214183, userId)
 
 
   for (const group of groups) {
@@ -100,6 +106,7 @@ export default async function handler(
   response = {
     username: robloxUsername,
     isInGar,
+    garRank,
     divisions,
     departments,
     blacklist

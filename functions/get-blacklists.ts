@@ -105,7 +105,7 @@ export async function getCard(card_name) {
   const cachedData = readCache();
 
   if (cachedData && cachedData.timestamp > Date.now() - 3600000) {
-    // Usar dados do cache
+
     const cards = cachedData.cards;
     console.log('Using cache info:', card_name);
 
