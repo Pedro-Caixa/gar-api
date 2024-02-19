@@ -31,8 +31,9 @@ function writeCache(data) {
         .map((punishment) => punishment.trim().replace('-', '').replace(/\n/g, ''));
   
       return {
-        Classification: listName,
+        Name: card.name,
         Description: description,
+        Classification: listName,
         Punishments: punishments,
         Url: card.shortUrl,
       };
@@ -100,6 +101,7 @@ async function updateCache() {
   }
   
   async function getCard(card_name) {
+    card_name = card_name.toString()
     let real_name
     const cachedData = readCache();
     const aliasList = JSON.parse(fs.readFileSync("./gar-information/rules_alias.json", 'utf-8'))
@@ -119,7 +121,9 @@ async function updateCache() {
         const offenseData = cachedData[category][real_name];
         console.log(offenseData)
         return offenseData; 
-      }
+      } 
     }
     return null; 
   }
+
+  getCard(3)
