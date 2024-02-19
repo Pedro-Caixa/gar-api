@@ -113,7 +113,7 @@ export default async function handler(
   };
 
   if (response) {
-    res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
+    res.setHeader('Cache-Control', 's-maxage=20, stale-while-revalidate')
     res.status(200).json(response);
   }
 }
