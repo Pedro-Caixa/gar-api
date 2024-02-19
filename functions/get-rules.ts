@@ -100,17 +100,26 @@ async function updateCache() {
   }
   
   async function getCard(card_name) {
+    let real_name
     const cachedData = readCache();
-    const aliasList = "./gar-information/rules_trello.json"
-
+    const aliasList = JSON.parse(fs.readFileSync("./gar-information/rules_alias.json", 'utf-8'))
+    
+    for (let alias in aliasList) {
+      if (aliasList.hasOwnProperty(alias)) {
+        const aliasInfo = aliasList[alias];
+        aliasInfo.forEach((single_alias) => {
+          if (card_name === single_alias) {
+            real_name = alias
+          }
+        })
+      }
+  }
     for (const category of ['MinorOffenses', 'MediumOffenses', 'HighOffenses']) {
-      if (cachedData[category][card_name]) {
-        const offenseData = cachedData[category][card_name];
+      if (cachedData[category][real_name]) {
+        const offenseData = cachedData[category][real_name];
         console.log(offenseData)
         return offenseData; 
       }
     }
     return null; 
   }
-
-getCard('Conspiracy - [1st Degree]')

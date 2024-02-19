@@ -3,5 +3,18 @@
     "Insubordination": ["insubordination"],
     "Openly Carrying": ["Open Carry", "Open carry", "opencarry"],
     "On-Duty Raiding": ["ondutyraiding", "On Duty Raiding", "on-dutyraiding"],
-    "Slacking Off": ["slackingoff"]
+    "Slacking Off": ["slackingoff"],
+    "False Imprisonment": ["falsejail", "falseimprisonment"],
+    "Cuff Evasion": ["cuffevasion"],
+    "Obstruction of an Official Event": ["obstructionofanofficialevent"],
+    "Team Killing (TK)": ["tk", "teamkilling", "teamkill"],
+    "AFK Farming": ["afkfarming", "farmafk"],
+    "Hosting an Illegitimate Event": ["hostingillegalevent", "fakeevent"],
+
+    "Leaking - [1st Degree]": ["leaking1st", "leaking1"],
+    "Abusing Glitches/Bugs": ["bugabuse", "glitchabuse"],
+    "Desertion/Improper Discharge": ["desertion", "improperdischarge"],
+    "Misusing Tryouts": ["misusingtryouts", "Misusing Tryouts"]
+
+
 }
