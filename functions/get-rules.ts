@@ -19,16 +19,23 @@ function writeCache(data) {
       return null;
     }
   
+    console.log("Extracting data for card:", card.name); // Log card name
+  
     const regex = /^(.*?)\n---\n\n### Punishments:\n\n(.*)/s;
     const matches = card.desc.match(regex);
   
     if (matches) {
-      const description = matches[1].trim().replace(/\n/g, ' '); 
+      const description = matches[1].trim().replace(/\n/g, ' ');
       const punishments = matches[2]
         .trim()
         .split('\n')
         .filter((punishment) => punishment.startsWith('-'))
         .map((punishment) => punishment.trim().replace('-', '').replace(/\n/g, ''));
+  
+      console.log("  Matches found:"); // Log match existence
+      console.log("    Name:", card.name); // Log captured name
+      console.log("    Description:", description); // Log captured description
+      console.log("    Punishments:", punishments); // Log captured punishments
   
       return {
         Name: card.name,
@@ -37,11 +44,14 @@ function writeCache(data) {
         Punishments: punishments,
         Url: card.shortUrl,
       };
+    } else {
+      console.log("  No match found for card:", card.name); // Log if no match found
     }
+  
     return null;
   }
   
-  
+    
 
 async function updateCache() {
     try {
@@ -80,12 +90,16 @@ async function updateCache() {
             }
         }
     }
+
     writeCache(cachedData)
     console.log('Cache updated successfully!');
     } catch (error) {
       console.error('Error updating cache:', error);
     }
   }
+
+  updateCache()
+
 
   function readCache() {
     try {
@@ -125,5 +139,3 @@ async function updateCache() {
     }
     return null; 
   }
-
-  getCard(3)

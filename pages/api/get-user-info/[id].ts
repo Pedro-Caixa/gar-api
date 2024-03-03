@@ -4,8 +4,14 @@ import noblox from 'noblox.js';
 import { getCardsInList, getCard } from "../../../functions/get-blacklists"
 
 function readJSON(path: string): any {
-  const info = fs.readFileSync(path, 'utf-8');
-  return JSON.parse(info);
+  try {
+    const info = fs.readFileSync(path, 'utf-8');
+    console.log(info); 
+    return JSON.parse(info);
+  } catch (error) {
+    console.error(`Error while reasing JSON ${path}: ${error.message}`);
+    throw error;
+  }
 }
 const garDivisions = readJSON('gar-information/divisions.json');
 const divisionRanks = readJSON('gar-information/division-officers.json');
@@ -56,9 +62,7 @@ export default async function handler(
   let divisions: Record<string, { isOfficer: boolean; isHICOM: boolean; rank: number; }> = {};
   let departments = {}
 
-  const cache = readJSON('gar-information/player_information.json');
   const userId = parseInt(req.query.id as string);
-  const userInfo = cache[userId];
 
   const robloxUsername = await noblox.getUsernameFromId(userId);
   const groups = await noblox.getGroups(userId);
