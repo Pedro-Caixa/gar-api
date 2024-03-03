@@ -53,7 +53,7 @@ function writeCache(data) {
   
     
 
-async function updateCache() {
+  export async function updateCache() {
     try {
       console.log('Updating cache from Trello...');
       const response = await axios.get(
@@ -113,7 +113,7 @@ async function updateCache() {
     }
   }
   
-  async function getCard(card_name) {
+  export async function getCard(card_name) {
     card_name = card_name.toString()
     let real_name
     const cachedData = readCache();
