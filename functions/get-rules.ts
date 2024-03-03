@@ -100,7 +100,6 @@ async function updateCache() {
 
   updateCache()
 
-
   function readCache() {
     try {
       return JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'));
