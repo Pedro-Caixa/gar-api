@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs';
-import noblox from 'cax-noblox'
+import noblox from 'noblox.js'
 import { getCardsInList, getCard } from "../../../functions/get-blacklists"
 // trying
 function readJSON(path: string): any {
