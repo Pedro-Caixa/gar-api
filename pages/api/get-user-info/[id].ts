@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs';
 import noblox from 'cax-noblox'
 import { getCardsInList, getCard } from "../../../functions/get-blacklists"
-
+// trying
 function readJSON(path: string): any {
   try {
     const info = fs.readFileSync(path, 'utf-8');
